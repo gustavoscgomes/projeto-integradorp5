@@ -1,18 +1,16 @@
 import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 
-// Passo Given: Acessando o portal
 Given("que o usuário está no portal da transparência", () => {
   cy.visit('https://transparencia.pb.gov.br'); 
 });
 
 When("o usuário digita {string} no campo de busca", (termoBusca) => {
-  cy.get('#nolivesearchGadget').type(termoBusca);  
+  cy.get('#nolivesearchGadget').type(termoBusca); 
 });
 
 And("o usuário clica no botão de busca", () => {
-  cy.get('.tile-search-site-bt-submit').click();  
+  cy.get('.tile-search-site-bt-submit').click();
 });
-
 
 Then("os resultados da busca contêm {string}", (termoEsperado) => {
   cy.get('.searchResults')

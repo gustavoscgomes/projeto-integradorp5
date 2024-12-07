@@ -9,7 +9,7 @@ When("o usuário clica no menu despesas", () => {
 });
 
 When('o usuário clica na opção de "TRANSPORTES"', () => {
-  cy.get(':nth-child(15) > .internal-link').click();  // Selecionando diretamente a opção "TRANSPORTES"
+  cy.get(':nth-child(15) > .internal-link').click();
 });
 
 When("o usuário clica no ícone de diárias", () => {

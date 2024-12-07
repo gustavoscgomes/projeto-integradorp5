@@ -5,7 +5,7 @@ Given("que o usuário está no portal da transparência", () => {
 });
 
 When("o usuário digita {string} no campo de busca", (termoBusca) => {
-  cy.get('#nolivesearchGadget').type(termoBusca);  // Inserindo o termo "educação" no campo de busca
+  cy.get('#nolivesearchGadget').type(termoBusca); 
 });
 
 And("o usuário clica no botão de busca", () => {
