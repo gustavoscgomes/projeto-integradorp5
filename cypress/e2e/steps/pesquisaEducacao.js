@@ -14,6 +14,12 @@ And("o usuário clica no botão de busca", () => {
 
 Then("os resultados da busca contêm {string}", (termoEsperado) => {
   cy.get('.searchResults') 
-    .should('be.visible') 
-    .contains(termoEsperado);
+    .should('be.visible')
+    .then(($results) => {
+      if ($results.text().includes(termoEsperado)) {
+        cy.log("O termo foi encontrado nos resultados.");
+      } else {
+        throw new Error(`O termo "${termoEsperado}" não foi encontrado nos resultados.`);
+      }
+    });
 });

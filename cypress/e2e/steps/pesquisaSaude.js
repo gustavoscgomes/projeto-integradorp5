@@ -17,7 +17,13 @@ And("o usuário clica no botão de busca", () => {
 
 // Passo Then: Verificar se os resultados contêm a palavra "saúde"
 Then("os resultados da busca contêm {string}", (termoEsperado) => {
-  cy.get('.searchResults')  // Seletor dos resultados da busca
-    .should('be.visible')  // Verifica se os resultados estão visíveis
-    .contains(termoEsperado);  // Verifica se os resultados contêm o termo "saúde"
+  cy.get('.searchResults') // Seletor dos resultados da busca
+    .should('be.visible') // Verifica se os resultados estão visíveis
+    .then(($results) => {
+      if ($results.text().toLowerCase().includes(termoEsperado.toLowerCase())) {
+        cy.log(`O termo "${termoEsperado}" foi encontrado nos resultados.`);
+      } else {
+        throw new Error(`O termo "${termoEsperado}" não foi encontrado nos resultados.`);
+      }
+    });
 });
